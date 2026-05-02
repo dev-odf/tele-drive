@@ -3,15 +3,14 @@ main = "src/index.ts"
 compatibility_date = "2024-04-01"
 
 [vars]
-API_ID = "YOUR_TELEGRAM_API_ID"
-API_HASH = "YOUR_TELEGRAM_API_HASH"
-CHANNEL_ID = "-100xxxxxxxx" # Your private storage channel ID
+API_ID = "YOUR_API_ID"
+API_HASH = "YOUR_API_HASH"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "tele_drive_db"
-database_id = "your-d1-id-here"[cite: 1]
+database_id = "your-d1-id"[cite: 1]
 
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "your-kv-id-here"[cite: 1]
+id = "your-kv-id"[cite: 1]
