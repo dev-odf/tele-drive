@@ -1,14 +1,40 @@
-<!-- Inside your frontend code -->
-<div class="file-list">
-  <div class="file-item">
-    <span>MyVideo.mp4</span>
-    <div class="dropdown">
-      <button>...</button> <!-- The 3 Dots[cite: 1] -->
-      <div class="menu">
-        <a href="/view/123">View Inline</a>
-        <a href="/download/123">Download</a>
-        <button onclick="deleteFile('123')">Delete</button>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .file-card { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+        .menu-3dots { cursor: pointer; position: relative; }
+        .dropdown { display: none; position: absolute; right: 0; background: white; border: 1px solid #ccc; z-index: 10; }
+        .file-card:hover .dropdown { display: block; }
+        .viewer-container { width: 100%; max-height: 500px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Tele-Drive</h1>
+    
+    <!-- Inline Viewer -->
+    <div id="viewer" class="viewer-container"></div>
+
+    <div id="fileList">
+        <!-- Files will be injected here -->
+        <div class="file-card">
+            <span onclick="playFile('vid_01')">Project_Demo.mp4</span>
+            <div class="menu-3dots">
+                ⋮
+                <div class="dropdown">
+                    <button onclick="download('vid_01')">Download</button>
+                    <button onclick="deleteFile('vid_01')" style="color:red">Delete</button>[cite: 1]
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
+    <script>
+        async function playFile(id) {
+            const container = document.getElementById('viewer');
+            // Dynamically inject <video> or <img> based on mime-type
+            container.innerHTML = `<video controls src="/api/view/${id}" style="width:100%"></video>`;[cite: 1]
+        }
+    </script>
+</body>
+</html>
